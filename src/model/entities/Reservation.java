@@ -47,8 +47,8 @@ public class Reservation {
      primeiro é criada uma variável para pegar o tempo do checkin e checkout em milisegundos com um getTime
      depois é feita uma conversão desses milisegundos para dias nessa caso, mas em outros casos pode ser feito para outros formatos */
     public long duration(){
-        long diferença = checkout.getTime() - checkin.getTime();
-        return TimeUnit.DAYS.convert(diferença, TimeUnit.MILLISECONDS);
+        long diferenca = checkout.getTime() - checkin.getTime();
+        return TimeUnit.DAYS.convert(diferenca, TimeUnit.MILLISECONDS);
     }
     public void updateDates(Date checkin, Date checkout){
         this.checkin = checkin;
