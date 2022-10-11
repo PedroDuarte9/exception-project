@@ -26,9 +26,12 @@ public class Program {
         System.out.println("Data de Check-Out (DD/MM/AAAA)");
         Date checkout = sdf.parse(sc.next());
 
-        Reservation reservation = new Reservation(roomNumber, checkin,checkout);
 
-        System.out.println(reservation);
+        list.add(new Reservation(roomNumber, checkin,checkout));
+
+        for (Reservation e : list ) {
+            System.out.println(e.toString());
+        }
 
         sc.close();
     }
