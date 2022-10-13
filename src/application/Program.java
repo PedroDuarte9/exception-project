@@ -2,36 +2,60 @@ package application;
 
 import model.entities.Reservation;
 
+import java.io.IOException;
+import java.sql.SQLOutput;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Program {
-    public static void main(String[] args) throws ParseException {
-        List<Reservation> list = new ArrayList<>();
+    public static void main(String[] args) throws ParseException  {
+
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
+        Date date = new Date();
+
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Digite o numero do quanto: ");
-        int roomNumber = sc.nextInt();
 
-        System.out.println("Data de Check-In (DD/MM/AAAA)");
-        Date checkin = sdf.parse(sc.next());
+            System.out.println("Room Number: ");
+            int roomNumber = sc.nextInt();
 
-        System.out.println("Data de Check-Out (DD/MM/AAAA)");
-        Date checkout = sdf.parse(sc.next());
+            System.out.println("Check-in Date (dd/MM/yyyy): ");
+            Date checkin = sdf.parse(sc.next());
+
+            System.out.println("Check-out (dd/MM/yyyy): ");
+            Date checkout = sdf.parse(sc.next());
+
+            Reservation reservation = new Reservation(roomNumber, checkin, checkout);
+
+            if(!checkout.after(checkin)){
+                System.out.println("Error in reservation: Check-out date must be after check-in date" );
+            }
+            else{
+                System.out.println("Reservation: " + reservation);
+            }
+
+            System.out.println("Enter data to update the reservation");
+
+            System.out.println("Check-in Date (dd/MM/yyyy): ");
+            checkin = sdf.parse(sc.next());
+
+            System.out.println("Check-out (dd/MM/yyyy): ");
+            checkout = sdf.parse(sc.next());
+            reservation.updateDates(checkin,checkout);
+            System.out.println(reservation);
 
 
-        list.add(new Reservation(roomNumber, checkin,checkout));
 
-        for (Reservation e : list ) {
-            System.out.println(e.toString());
-        }
+
+
+
+
+
+
+
 
         sc.close();
     }
