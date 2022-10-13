@@ -14,7 +14,7 @@ public class Program {
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-        Date date = new Date();
+
 
         Scanner sc = new Scanner(System.in);
 
