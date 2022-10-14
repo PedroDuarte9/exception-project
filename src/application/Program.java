@@ -11,13 +11,9 @@ import java.util.*;
 public class Program {
     public static void main(String[] args) throws ParseException  {
 
-
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-
-
         Scanner sc = new Scanner(System.in);
-
 
             System.out.println("Room Number: ");
             int roomNumber = sc.nextInt();
@@ -47,12 +43,13 @@ public class Program {
             System.out.println(reservation);
 
 
-
-
             String erro = reservation.updateDates(checkin,checkout);
-            System.out.println("Erro in reservation: " + erro);
-
-
+            if(erro != null) {
+                System.out.println("Error in reservation: " + erro);
+            }
+            else{
+                System.out.println("Reservation " + reservation);
+            }
         sc.close();
     }
 }
